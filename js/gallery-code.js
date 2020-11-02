@@ -32,23 +32,22 @@ lightboxImageEl.src = evt.target.dataset.source;
 lightboxImageEl.alt = evt.target.alt;
 }
 
-const lightboxClose = document.querySelector('.lightbox')
-lightboxClose.addEventListener('click', closeModal)
+const lightboxCloseOverlay = document.querySelector('.lightbox__overlay');
+const lightboxCloseButton = document.querySelector('.lightbox__button');
+lightboxCloseOverlay.addEventListener('click', closeModal);
+lightboxCloseButton.addEventListener('click', closeModal);
 
 function closeModal (evt) {
-  if (evt.target === document.querySelector('.lightbox__overlay') ||evt.target === document.querySelector('.lightbox__button')) {
     lightboxEl.classList.remove('is-open');
     lightboxImageEl.src = ' ';
     lightboxImageEl.alt = ' ';
-  }
+  
  }
 
  window.addEventListener('keydown', closeModalbyEsc)
  function closeModalbyEsc (evt){
   if (evt.code === "Escape"){
-  lightboxEl.classList.remove('is-open');
-  lightboxImageEl.src = ' ';
-  lightboxImageEl.alt = ' ';
+  closeModal()
   }
  }
 
